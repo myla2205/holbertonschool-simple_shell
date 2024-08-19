@@ -9,7 +9,7 @@
 
 void display_input(char **line, size_t *length)
 {
-	if(isatty(STDIN_FILENO))
+	if (isatty(STDIN_FILENO))
 	{
 		printf("#cisfun$ ");
 	}
