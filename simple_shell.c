@@ -1,10 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <string.h>
-#include <sys/wait.h>
-
-extern char **environ;
+#include "shell.h"
 
 /**
  * main - function para simple shell
@@ -17,6 +11,7 @@ int main(void)
 	size_t length = 0;
 	ssize_t leido;
 	pid_t pid;
+	char *args[2];
 
 	while (1)
 	{
@@ -43,7 +38,8 @@ int main(void)
 		}
 		if (pid == 0)
 		{
-			char *args[] = {line, NULL};
+			args[0] = line;
+			args[1] = NULL;
 
 			execve(args[0], args, environ);
 			perror("./shell");
