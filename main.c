@@ -16,7 +16,6 @@ int main(void)
 
 		if (strcmp(line, "exit") == 0)
 		{
-	
 			break;
 		}
 
