@@ -2,13 +2,17 @@
 
 /**
  * main - function imrpime prompt
+ * @ac: argument count
+ * @av: pointer to pointer argument vector
  * Return: 0 es exito
  */
 
-int main(void)
+int main(int ac, char **av)
 {
 	char *line = NULL;
 	size_t length = 0;
+
+	(void)ac;
 
 	while (1)
 	{
@@ -21,7 +25,7 @@ int main(void)
 
 		if (strlen(line) > 0)
 		{
-			fork_func(line);
+			fork_func(line, av[0]);
 		}
 	}
 

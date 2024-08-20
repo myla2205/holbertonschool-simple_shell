@@ -4,9 +4,10 @@
  * fork_func - function que usa fork para fork un nuevo process
  * y ejecuta el commando entrado por usuario
  * @line: pointer que recibe el input
+ * @programa: pointer que nombre de programa ejecutable
  */
 
-void fork_func(char *line)
+void fork_func(char *line, char *programa)
 {
 	/**
 	 * args es un array de strings, donde el primer elemento
@@ -31,9 +32,11 @@ void fork_func(char *line)
 	 */
 	if (pid == 0)
 	{
-		execve(args[0], args, environ);
-		perror("./shell");
-		exit(EXIT_FAILURE);
+		if (execve(args[0], args, environ) == -1)
+		{
+			fprintf(stderr, "%s: 1: %s: not found\n", programa, args[0]);
+			exit(EXIT_FAILURE);
+		}
 	}
 
 	else if (pid > 0)
