@@ -14,6 +14,12 @@ int main(void)
 	{
 		display_input(&line, &length);
 
+		if (strcmp(line, "exit") == 0)
+		{
+	
+			break;
+		}
+
 		if (strlen(line) > 0)
 		{
 			fork_func(line);
