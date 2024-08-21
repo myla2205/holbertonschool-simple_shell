@@ -10,15 +10,21 @@
 void fork_func(char *line, char *programa)
 {
 	int argc = 0;
-	char *token = strtok(line, " ");
+	int i;
+	char *token = strtok(line, " \t\r\n");
 	char *args[100];
 	pid_t pid;
 
-	while (token != NULL && argc < 100)
+	for (i = 0; i < 100; i++)
+	{
+		args[i] = NULL;
+	}
+
+	while (token != NULL && argc < 99)
 	{
 		args[argc] = token;
 		argc++;
-		token = strtok(NULL, " ");
+		token = strtok(NULL, " \t\r\n");
 	}
 	args[argc] = NULL;
 

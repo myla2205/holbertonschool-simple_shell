@@ -9,12 +9,16 @@
 
 void display_input(char **line, size_t *length)
 {
+	ssize_t nread;
+
 	if (isatty(STDIN_FILENO))
 	{
 		printf("#cisfun$ ");
 	}
 
-	if (getline(line, length, stdin) == -1)
+	nread = getline(line, length, stdin);
+
+	if (nread == -1)
 	{
 		if (isatty(STDIN_FILENO))
 		{
@@ -25,6 +29,14 @@ void display_input(char **line, size_t *length)
 		exit(0);
 	}
 
-	(*line)[_strcspn(*line, "\n")] = '\0';
+	if (nread > 0 && (*line)[nread - 1] == '\n')
+	{
+		(*line)[nread - 1] = '\0';
+	}
+
+	else
+	{
+		(*line)[_strcspn(*line, "\n")] = '\0';
+	}
 
 }

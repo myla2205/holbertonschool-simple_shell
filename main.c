@@ -18,7 +18,20 @@ int main(int ac, char **av)
 	while (1)
 	{
 		display_input(&line, &length);
+
+		if (line == NULL || *line == '\0')
+		{
+			continue;
+		}
+
 		trimmed_line = trim_command(line);
+
+		if (trimmed_line == NULL)
+		{
+			free(line);
+			line = NULL;
+			continue;
+		}
 
 		if (strcmp(trimmed_line, "exit") == 0)
 		{
