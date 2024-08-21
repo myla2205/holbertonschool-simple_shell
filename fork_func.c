@@ -11,14 +11,13 @@ void fork_func(char *line, char *programa)
 {
 	int argc = 0;
 	char *token = strtok(line, " ");
-	char **args = malloc(sizeof(char *) * (argc + 1));
+	char *args[100];
 	pid_t pid;
 
-	while (token != NULL)
+	while (token != NULL && argc < 100)
 	{
 		args[argc] = token;
 		argc++;
-		args = realloc(args, sizeof(char *) * (argc + 1));
 		token = strtok(NULL, " ");
 	}
 	args[argc] = NULL;
@@ -44,6 +43,4 @@ void fork_func(char *line, char *programa)
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
-
-	free(args);
 }
