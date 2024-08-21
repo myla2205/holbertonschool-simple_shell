@@ -14,13 +14,6 @@ void display_input(char **line, size_t *length)
 		printf("#cisfun$ ");
 	}
 
-	/*
-	 * getline recoge el input de usuario y lo guarde en line
-	 * y recoge el largo del input y lo guarde en length
-	 * si da error, -1, imprime newline y exit
-	 * isatty es una function para chequear si el input viene del terminal
-	 */
-
 	if (getline(line, length, stdin) == -1)
 	{
 		if (isatty(STDIN_FILENO))
@@ -31,12 +24,6 @@ void display_input(char **line, size_t *length)
 		exit(0);
 	}
 
-	/**
-	 * usamos string comparison para calcular el largo largo del string
-	 * hasta llegar el delimitator, que es el new line
-	 * y lo remplaza con un null terminator
-	 */
-
-	(*line)[strcspn(*line, "\n")] = '\0';
+	(*line)[_strcspn(*line, "\n")] = '\0';
 
 }

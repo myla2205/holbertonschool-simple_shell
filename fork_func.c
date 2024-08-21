@@ -16,15 +16,9 @@ void fork_func(char *line, char *programa)
 	args[0] = line;
 	args[1] = NULL;
 
-	if (access(args[0], F_OK) == -1)
-	{
-		if (isatty(STDIN_FILENO))
-		{
-			perror(programa);
-		}
-	}
 	pid = fork();
 
+	
 	if (pid == 0)
 	{
 		if (execve(args[0], args, environ) == -1)
