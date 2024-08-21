@@ -27,6 +27,9 @@ int main(int ac, char **av)
 		{
 			fork_func(line, av[0]);
 		}
+
+		free(line);
+		line = NULL;
 	}
 
 	free(line);

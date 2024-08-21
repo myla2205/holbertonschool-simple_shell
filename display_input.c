@@ -21,6 +21,7 @@ void display_input(char **line, size_t *length)
 			printf("\n");
 		}
 
+		free(*line);
 		exit(0);
 	}
 
