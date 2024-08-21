@@ -9,12 +9,19 @@
 
 void fork_func(char *line, char *programa)
 {
-
-	char *args[2];
+	int argc = 0;
+	char *token = strtok(line, " ");
+	char **args = malloc(sizeof(char *) * (argc + 1));
 	pid_t pid;
 
-	args[0] = line;
-	args[1] = NULL;
+	while (token != NULL)
+	{
+		args[argc] = token;
+		argc++;
+		args = realloc(args, sizeof(char *) * (argc + 1));
+		token = strtok(NULL, " ");
+	}
+	args[argc] = NULL;
 
 	pid = fork();
 
@@ -23,8 +30,8 @@ void fork_func(char *line, char *programa)
 		if (execve(args[0], args, environ) == -1)
 		{
 			perror(programa);
-			exit(EXIT_FAILURE);
 		}
+		exit(EXIT_FAILURE);
 	}
 
 	else if (pid > 0)
@@ -37,4 +44,6 @@ void fork_func(char *line, char *programa)
 		perror("fork");
 		exit(EXIT_FAILURE);
 	}
+
+	free(args);
 }
