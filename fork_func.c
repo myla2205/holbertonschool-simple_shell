@@ -18,7 +18,6 @@ void fork_func(char *line, char *programa)
 
 	pid = fork();
 
-	
 	if (pid == 0)
 	{
 		if (execve(args[0], args, environ) == -1)
