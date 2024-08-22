@@ -1,0 +1,49 @@
+\" Man for simple_shell
+.TH "simple_shell" "19 August 2024" "Hoberton School, Simple Shell"
+
+.SH NAME
+simple_shell \- A simple terminal shell programm written in C.
+
+.SH SYNOPSIS
+Usage instructions for the simple_shell programm.
+
+.SH DESPCRIPTION
+simple_shell is an interactive and non-interactive minimalistic shell that provides a basic command-line interface.
+
+.PP
+It displays a prompt and waits for the user to type a command.
+
+.B ./hsh
+To compile the programm use the following command:
+ gcc -Wall -Werror -Wextra -pedantic -std=gnu89 *.c -o hsh
+
+After compilation, you can run the Simple Shell using:
+
+.B ./hsh
+
+.SH OPTIONS
+This shell supports a range of standars command-line oprtions, wich can be entered by the user after the prompt.
+
+.SH EXAMPLE
+
+.B echo "ls" | ./hsh
+
+You can test the shell in both interactive and non-interctive modes. For example, in non-interactive mode:
+
+.B echo "ls" | ./hsh
+
+To exit the shell, simply type:
+
+.B exit
+
+
+.SH SEE ALSO
+Refer to the standar shell commands that can be used with simple_shell.
+
+.SH BUGS
+
+There are no known bugs at this time.
+
+.SH AUTHORS
+Carlos Valverde <cvalverde96@gmail.com>
+Kamyl Jiménez <myla2205@gmail.com>
