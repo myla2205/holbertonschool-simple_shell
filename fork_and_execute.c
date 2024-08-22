@@ -1,9 +1,11 @@
 #include "shell.h"
 
 /**
- * fork_and_execute - funcion
- * @args: args
- * @programa: program
+ * fork_and_execute - funcion que como tal ejecuta
+ * comandos a traves de execve en
+ * child process
+ * @args: arreglo de string con comandos
+ * @programa: nombre de programa
  */
 
 void fork_and_execute(char *args[], char *programa)
