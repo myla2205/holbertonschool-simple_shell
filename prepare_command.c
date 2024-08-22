@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * prepare_command - funcion
- * @args: args
- * @path: path
+ * prepare_command - funcion para asegurar que apunta al ejecutable correcto
+ * @args: arreglo de strings donde args[0] es el comando
+ * @path: buffer para aguantar path completo
  */
 
 void prepare_command(char *args[], char *path)
