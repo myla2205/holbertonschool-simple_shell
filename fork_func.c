@@ -10,43 +10,21 @@
 void fork_func(char *line, char *programa)
 {
 	int argc = 0;
-	int i;
-	char *token = strtok(line, " \t\r\n");
+	char *token;
 	char *args[100];
-	pid_t pid;
+	char path[256];
 
-	for (i = 0; i < 100; i++)
-	{
-		args[i] = NULL;
-	}
+	token = strtok(line, " \t\r\n");
 
 	while (token != NULL && argc < 99)
 	{
-		args[argc] = token;
-		argc++;
+		args[argc++] = token;
 		token = strtok(NULL, " \t\r\n");
 	}
 	args[argc] = NULL;
 
-	pid = fork();
+	prepare_command(args, path);
 
-	if (pid == 0)
-	{
-		if (execve(args[0], args, environ) == -1)
-		{
-			perror(programa);
-		}
-		exit(EXIT_FAILURE);
-	}
+	fork_and_execute(args, programa);
 
-	else if (pid > 0)
-	{
-		wait(NULL);
-	}
-
-	else
-	{
-		perror("fork");
-		exit(EXIT_FAILURE);
-	}
 }
