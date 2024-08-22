@@ -1,5 +1,5 @@
 \" Man for simple_shell
-TH "simple_shell" "19 August 2024" "Hoberton School, Simple Shell"
+.TH "simple_shell" "19 August 2024" "Hoberton School, Simple Shell"
 
 .SH NAME
 simple_shell \- program terminal in C language
