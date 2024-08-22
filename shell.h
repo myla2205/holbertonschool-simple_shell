@@ -15,5 +15,7 @@ void fork_func(char *line, char *programa);
 int main(int ac, char **av);
 size_t _strcspn(const char *s1, const char *s2);
 char *trim_command(char *input);
+void prepare_command(char *args[], char *path);
+void fork_and_execute(char *args[], char *programa);
 
 #endif
